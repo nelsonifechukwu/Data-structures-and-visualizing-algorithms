@@ -14,6 +14,7 @@ public:
   Node(int data, Node *next);
 };
 
+template <typename T>
 class Linkl {
 private:
   Node head;
@@ -23,9 +24,9 @@ public:
   Linkl();
   ~Linkl();
   void display();
-  void insertFirst(int data);
-  void insertLast(int data);
-  void insertAt(int index, int data);
+  void insertFirst(T data);
+  void insertLast(T data);
+  void insertAt(int index, T data);
   Node popLast();
   Node popFirst();
   void reverse(Linkl &newobj);

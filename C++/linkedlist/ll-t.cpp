@@ -48,7 +48,8 @@ public:
     }
     cout << "null";
     cout << " (Size: " << size << ")" << endl;
-  };
+  }
+  
   void insertFirst(T data) {
     Node<T> *temp = new Node<T>(data);
     temp->next = head.next;

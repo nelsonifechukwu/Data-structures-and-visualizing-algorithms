@@ -4,10 +4,10 @@ using namespace std;
 
 #ifndef LL
 #define LL
-template <typename T>
+
 class Node {
 public:
-  T data;
+  int data;
   Node *next;
   Node();
   Node(int data);

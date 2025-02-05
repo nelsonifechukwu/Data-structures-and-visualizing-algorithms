@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/elijahnelson/Desktop/PROJECTS/AlgoVisualizer/C++",
-      "program": "/Users/elijahnelson/Desktop/PROJECTS/AlgoVisualizer/C++/build/Debug/outDebug"
+      "cwd": "/Users/elijahnelson/Desktop/PROJECTS/DSAVisualizer/C++/stack",
+      "program": "/Users/elijahnelson/Desktop/PROJECTS/DSAVisualizer/C++/stack/build/Debug/outDebug"
     }
   ]
 }

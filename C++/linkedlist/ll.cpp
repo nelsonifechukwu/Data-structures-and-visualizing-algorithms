@@ -39,19 +39,21 @@ void Linkl::insertFirst(int data) {
   }
   size++;
 }
+
 void Linkl::insertLast(int data) {
   Node *newnode = new Node(data);
   if (head.next == nullptr) {
     head.next = newnode;
+    size++;
+    return;
   }
-  Node *val = head.next;
+// Traverse to the last node
   Node *temp = head.next;
-  while (head.next != nullptr) {
-    temp = head.next;
-    head = *(head.next);
+  while (temp->next != nullptr) {
+      temp = temp->next;
   }
+  // Insert at the end
   temp->next = newnode;
-  head.next = val;
   size++;
 }
 

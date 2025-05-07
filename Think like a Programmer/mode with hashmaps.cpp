@@ -60,5 +60,5 @@ int mode(int *arr, int size) {
 
 int main() {
   int arr[13] = {4, 3, 6, 7, 8, 1, 3, 2, 0, 4, 4, 69, 2};
-  std::cout << mode(arr, 13) << '\n';
+  std::cout << mode(arr, sizeof(arr)/sizeof(arr[0])) << '\n';
 }

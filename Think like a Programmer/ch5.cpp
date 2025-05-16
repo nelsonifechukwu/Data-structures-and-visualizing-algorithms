@@ -98,10 +98,12 @@ public:
   void addRecord(studentRecord newStudent);
   studentRecord recordWithNumber(int idNum);
   void removeRecord(int idNum);
-
+  ~studentCollection();
+  
 private:
   typedef studentNode *studentList;
   studentList _listHead;
+  void deleteList(studentList &listPtr);
 };
 
 studentCollection::studentCollection() { _listHead = NULL; }
@@ -134,10 +136,19 @@ void studentCollection::removeRecord(int idNum) {
   }
   if (loopPtr == NULL)
     return;
-  if (trailing == NULL) {
+  if (trailing == NULL) { // take care of removing the first node.
     _listHead = _listHead->next;
   } else {
     trailing->next = loopPtr->next;
   }
   delete loopPtr;
 }
+
+void studentCollection::deleteList(studentList &listPtr) {
+  while (listPtr != NULL) {
+    studentNode *temp = listPtr;
+    listPtr = listPtr->next;
+    delete temp;
+  }
+}
+studentCollection::~studentCollection() { deleteList(_listHead); }

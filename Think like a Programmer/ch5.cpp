@@ -19,6 +19,15 @@ of implementation result must remain the same.
 points, don't store the new data point.
 
 -composition: using an obj of one class as a dtype in another
+
+-difference between a copy constructor (cc) and an assignment operation
+    - a cc creates a new copy of an existing object and is invoked when:
+        - an obj is used to initialize a new obj; int a = b; int a {b}
+        - an obj is passed by value to a function
+        - an obj is returned by value from a function
+       **(which is why we pass obj params as const & so that the code won't be doing unnecessary work)
+    - an assignment operation is invoked when 2 initialized objs are assigned to each other: e.g int a; int b; a = b.
+    - a cc doesn't have a return type while an assignment operation has in the case of a = (b = c).
 */
 #include <iostream>
 #include <string>
@@ -95,6 +104,8 @@ private:
 
 public:
   studentCollection();
+  //copy constructor
+  studentCollection(const studentCollection& original);
   void addRecord(studentRecord newStudent);
   studentRecord recordWithNumber(int idNum);
   void removeRecord(int idNum);
@@ -180,5 +191,10 @@ studentCollection &studentCollection::operator=(const studentCollection &rhs) {
     deleteList(_listHead); // remove all previous node of LHS list
     _listHead = copiedList(rhs._listHead);
   }
-  return *this; // return this in case of s3 = s2 = s1, also s3 = s1 = s1;
+  return *this; // return this in case of s3 = (s2 = s1), also s3 = (s1 = s1);
+}
+
+//copy constructor
+studentCollection::studentCollection(const studentCollection &original) {
+_listHead = copiedList(original._listHead);
 }

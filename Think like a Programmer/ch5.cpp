@@ -98,12 +98,14 @@ public:
   void addRecord(studentRecord newStudent);
   studentRecord recordWithNumber(int idNum);
   void removeRecord(int idNum);
+  studentCollection &operator=(const studentCollection &rhs);
   ~studentCollection();
-  
+
 private:
   typedef studentNode *studentList;
   studentList _listHead;
   void deleteList(studentList &listPtr);
+  studentList copiedList(const studentList original);
 };
 
 studentCollection::studentCollection() { _listHead = NULL; }
@@ -152,3 +154,31 @@ void studentCollection::deleteList(studentList &listPtr) {
   }
 }
 studentCollection::~studentCollection() { deleteList(_listHead); }
+
+// deep copy 2 studentList
+studentCollection::studentList
+studentCollection::copiedList(const studentList original) {
+  if (original == NULL)
+    return NULL;
+  studentList newList = new studentNode;
+  newList->studentData = original->studentData;
+  studentNode *temp_original = original->next;
+  studentNode *temp_new = newList;
+  while (temp_original != NULL) {
+    temp_new->next = new studentNode;
+    temp_new = temp_new->next;
+    temp_new->studentData = temp_original->studentData;
+    temp_original = temp_original->next;
+  }
+  temp_new->next = NULL;
+  return newList;
+}
+
+// using the above copy helper method, we can overload the assignment operator
+studentCollection &studentCollection::operator=(const studentCollection &rhs) {
+  if (this != &rhs) {
+    deleteList(_listHead); // remove all previous node of LHS list
+    _listHead = copiedList(rhs._listHead);
+  }
+  return *this; // return this in case of s3 = s1 = s1
+}

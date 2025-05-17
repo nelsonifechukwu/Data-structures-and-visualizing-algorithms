@@ -180,5 +180,5 @@ studentCollection &studentCollection::operator=(const studentCollection &rhs) {
     deleteList(_listHead); // remove all previous node of LHS list
     _listHead = copiedList(rhs._listHead);
   }
-  return *this; // return this in case of s3 = s1 = s1
+  return *this; // return this in case of s3 = s2 = s1, also s3 = s1 = s1;
 }

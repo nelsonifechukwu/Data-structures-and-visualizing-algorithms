@@ -13,7 +13,7 @@ a dispatcher:
 1) handles the base (most trivial) case
 2) must pass a smaller version of the problem to the next call.
 
-The big idea of recursion is to move from dispatching to a recursive calls.
+The big idea of recursion is to move from dispatching to recursive calls.
 */
 
 

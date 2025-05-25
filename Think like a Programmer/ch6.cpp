@@ -16,6 +16,12 @@ a dispatcher:
 The big idea of recursion is to move from dispatching to a recursive calls.
 */
 
+/*
+avoid these common mistakes in recursion:
+-using global variables to keep track of states across recursive function calls
+-passing too many params to a recursive process 
+*/
+
 
 int iterativeArraySum(int integers[], int size) {
   int sum = 0;
